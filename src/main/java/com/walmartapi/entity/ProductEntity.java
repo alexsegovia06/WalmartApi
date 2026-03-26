@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import org.springframework.data.annotation.Id;
 
-@Entity 
+@Entity
 @Table(name = "products")
 public class ProductEntity {
 
