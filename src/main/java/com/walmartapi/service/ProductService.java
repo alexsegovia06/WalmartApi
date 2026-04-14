@@ -37,4 +37,21 @@ public class ProductService {
         return productMapper.mapToDto(product.get());
     }
 
+    public Product updateProduct(Long id,  Product product) {
+        if(productRepository.findById(id).isEmpty()) {
+            throw new NotFound("Product not found");
+        }
+        ProductEntity updateProduct = productMapper.mapToEntity(product);
+        updateProduct.setId(id);
+        ProductEntity updateEntity = productRepository.save(updateProduct);
+        return productMapper.mapToDto(updateEntity);
+    }
+
+    public void deleteProduct(Long id){
+        if(productRepository.findById(id).isEmpty()) {
+            throw new NotFound("Product not found");
+        }
+        productRepository.deleteById(id);
+    }
+
 }
